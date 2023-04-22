@@ -102,24 +102,18 @@ I'll regularly be typing pseudocode as comments within the functions as I code.
         - a unique CLASS NAME 
         - an IMAGE
             - assign each image a unique CLASS NAME
-    - make it default that each image is hidden until clicked (event listener)
-        - when clicked, flip IMAGE over
-- create a start button, a timer heading, and a timer under the heading named timer
+- create a start button, a timer heading, and a timer (for 1 minute) under the heading named timer
+    - start button refreshes game 
+    - timer resets with start button click (event listener?)
+- make it default that each image is hidden/covered until clicked 
+- when a box is clicked (event listener), make the image visible by flipping it over 
+- when a consecutive box is clicked:    
+    - and it matches, keep BOTH cards visible
+    - and it doesn't match, hide BOTH cards
+- Finish the game in 1 minute or less:
+    - if finished in 1 minute or less, display "Congratulations! You Won!"
+    - if timer ends, display "You ran out of time!" and prevent any leftover cards from being clicked
 
-
-- The game to start when I click start so that the board is cleared for a brand new game and a minute timer begins
-- To click on a box and have it display an image so that I can begin memorizing the images
-- To click on another box (to match the first box clicked) and:
-    - if the same image is displayed, keep the images displaying so that I stop looking for that image
-    - if the images are different, display wrong click until next click so that I have more time to memorize its location
-- To finish the game in 1 minute or less because it tests my short term memory skills
-    - To see a message rendered above the board that says I have run out of time 
-        - To not be able to continue playing if I did not complete the game in 1 minute or less, so I can focus on the game, not the time
-    - A congratulatory message to be rendered above the board if I match all the flags in 1 minute or less because it's validating
-        - If the congratulatory message is rendered, I want the timer to stop because the game is over
-
-
-        
 
 ## Identify the application's state (data)
 - What information does the application need to "remember" throughout its execution?
