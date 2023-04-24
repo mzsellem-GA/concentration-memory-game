@@ -8,12 +8,9 @@ CONCENTRATION MEMORY GAME
 
 ☐ Getting Started: In this section include the link to your deployed game and any instructions you deem important.
 
-☐ Next Steps: An nice enhancement would be to vary HOW the tile flips over to reveal the flag image. Maybe something flourish-y.
+☐ Next Steps: music on start, flag randomizer feature.
 
 - frequent commits (at least 1 everyday --starting monday 4/24)
-
-
-            ~~~~~~      ~~~~~~      ~~~~~~      ~~~~~~
 
 ## Analze the app's functionality
 
@@ -26,15 +23,15 @@ As a player I want:
     - if the same image is displayed, keep the images displaying so that I stop looking for that image
     - if the images are different, display wrong click until next click so that I have more time to memorize its location
 - To finish the game in 1 minute or less because it tests my short term memory skills
-    - To see a message rendered above the board that says I have run out of time 
-        - To not be able to continue playing if I did not complete the game in 1 minute or less, so I can focus on the game, not the time
+    - To see a message rendered above the board that says I have run out of time
+        - To not be able to continue playing if I did not complete the game in 1 minute or less, because the game is over
     - A congratulatory message to be rendered above the board if I match all the flags in 1 minute or less because it's validating
         - If the congratulatory message is rendered, I want the timer to stop because the game is over
 
 
 Game Specific MVPs
 - To use flags of countries as theme for game (8 different images)
-- Display wrong match until next click
+- Display wrong match for some predetermined amount of time
 - To finish the game in 1 minute or less (timer)
 
 Project Specific-MVPs
@@ -42,7 +39,7 @@ Project Specific-MVPs
 
 - Include win/loss logic and render win/loss messages in HTML. Popup alerts using the alert() method are okay during development, but not production.
 
-- Include separate HTML, CSS & JavaScript files. [DONE]
+- Include separate HTML, CSS & JavaScript files.
 
 - Use vanilla JavaScript, not jQuery.
 
@@ -66,55 +63,88 @@ Project Specific-MVPs
 
 ## Wireframe the UI (no code)
 
+![figma representation](Concentration-Memory-Game-Wireframe.png)
 
-- HTML, CSS, Javascript
 
 ## Pseudocode (example structure from connect four)
 - Pseudocode outlines the app's logic using plain language. It provides a road map to writing the code itself.
 
-I'll regularly be typing pseudocode as comments within the functions as I code.
-1) Define required constants
-2) Define required variables used to track the state of the game
-3) Cache DOM elements
-    - Message place
-    - Play again button 
-    - Game board
-    - Column buttons = markers
-    - above ticks are examples. make applicable to concentration game
-4) Upon loading the app should:
-    4.1) Initialize the state variables
-    4.2) Render those values to the page
-    4.3) Wait for the user to interact
-    4.4) above ticks are examples. make applicable to concentration game
-5) Handle a player clicking a column button
-6) Handle a player clicking the replay button
-7) Check for a winner
-
-
---------------------------------------------
-*** when done, break down everything into categories (cached elements, event listeners, etc.)
 
 - create a header with the name of the game
-- create an h1 for (later) rendering of a "you ran out of time" or "congratulations, you won" message
-- make the background a pine wood table using free art site
-- create a 4x4 grid board with basic HTML & CSS
+- create an h2 for (later) rendering of a "Sorry! You ran out of time!" or "Congratulations, you won!" message
+- make the background a pine wood table 
+- create a 4x4 grid board with each box having an outline (illusion of square "slot")
     - assign each box:  
-        - a unique CLASS NAME 
-        - an IMAGE
-            - assign each image a unique CLASS NAME
-- create a start button, a timer heading, and a timer (for 1 minute) under the heading named timer
+        - two class names: "cell" and whatever "flag name" is going there (ie. French)
+- create a start button, a timer (for 1 minute) and a title for the timer (visually above it)
     - start button refreshes game 
-    - timer resets with start button click (event listener?)
-- make it default that each image is hidden/covered until clicked 
-- when a box is clicked (event listener), make the image visible by flipping it over 
-- when a consecutive box is clicked:    
-    - and it matches, keep BOTH cards visible
-    - and it doesn't match, hide BOTH cards
-- Finish the game in 1 minute or less:
-    - if finished in 1 minute or less, display "Congratulations! You Won!"
-    - if timer ends, display "You ran out of time!" and prevent any leftover cards from being clicked
+    - timer resets with start button click 
+- make it default that each flag is hidden until clicked 
+- when a box is clicked, make the flag visible 
+- when a consecutive box is clicked, ensure that only two flags will be compared at a single time
+    - compare the two flags:
+        - if match, keep BOTH cards visible
+        - if no match, hide BOTH cards after a 2 second timer delay
+- if all flags are matched, all flags are visible, AND the timer is under 1 minute, display: "Congratulations, you won!"
+    - else, display: "Sorry! You ran out of time!
 
+
+1 Define required constants
+    - two arrays:
+        - flagArray1 with the following property:
+            - flag (key) and image of the flag (value)
+        - flagArray2 as a copy of flagArray1 to match against
+
+2 Define required variables used to track the state of the game
+    - use a board to represent the boxes to choose from 
+    - let timer
+    - let isSolved
+    - the following properties on BOTH arrays:
+        - flag key
+    - the following properties on flagArray1:
+        - isMatch
+        - isVisible
+3 Cache DOM elements (store a representation of the view, seen by the player, so these elements can be updated/manipulated)
+    - store the 18 elements that represent the flags on the page
+        - child divs with 2 class names (cell and name of flag)
+    - renderMessage()
+        - for the "you win" or "you ran out of time" message
+    - play again button = start button = initialization ????
+        - resets timer
+        - resets flags to inital state (hidden)
+        - reset messages to initial state (empty string)
+4 Upon loading the app should:
+    4.1 Initialize the state variables
+        - properties of flagArray1:
+            - isVisible: false
+            - isMatch: false
+        - let timer begin at 00:00
+        - let isSolved = false
+        - let renderMessage = " ";
+    4.2 Render those values to the page
+    4.3 Wait for the user to interact
+5 Handle a player beginning a game
+    5.1 player clicks start button
+        - timer starts 
+        - all states are initialized
+6 Handle a player clicking a box
+    - player clicks a box --> reveals image of flag (do this through nesting an image tag in the child div --parent is linked to its children)
+        - create a function such that only two cards can be compared at a time
+        - if the second click reveals a matching flag:
+            - flag remains visible for the remainder of the game
+                - make sure to remove click-ability if isSolve = true (first thing in event listener)
+        - if the second click reveals a non-matching flag:
+            - after 2 seconds, hide the flag
+                - update isVisible = false
+        - for flagArray1, if all objects have the following values: isVisible = true and isMatch = true, AND the timer is under 1 minute, isSolved = true
+        - else, isSolved = false
+7 Render message based on isSolved values:
+    - true: (use DOM to) display "Congratulations, you won!"
+    - false: (use DOM to) display "Sorry! You ran out of time!"
 
 ## Identify the application's state (data)
-- What information does the application need to "remember" throughout its execution?
-    - Use the wireframe and pseudocode to help identify what state needs to be tracked.
+- isMatch
+- isVisible
+- checkIsSolved
+- isSolved
+- numFlagsVisible
