@@ -2,14 +2,15 @@
     font-family: 'Ysabeau', sans-serif;
 }
 body {
+    display: flex;
+    flex-direction: column;
     background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4NTkzNzEzLWltYWdlLWt3dnhvZXB2LmpwZw.jpg');
     background-size: cover;
-    height: 1000px;
-    width: 790px;
+    background-repeat: no-repeat;
   }
 h1 {
     text-align: center;
-
+    font-size: 50px;
 }
 div.parent-div *{
     text-align: center;
@@ -25,22 +26,23 @@ div.parent-div *{
 
 .start-timer-banner{
     display: flex;
+    flex-direction: column;
     position: relative;
-    top: 150px;
     align-items: center;
 }
 .start-button-div{
-    display: flex;
-    padding: 15px;
-    flex-wrap: wrap;
-    position: absolute;
-    left: 140px;
+    position: relative;
+}
+.start-button{
+    margin: 40px 0 0 0;
+    font-size: 35px;
+    border-radius: 25px;
 }
 
 .timer-div{
     text-align: center;
-    display: flex;
-    flex-wrap: wrap; 
-    position: absolute;
-    right: 110px;
+    position: relative;
+}
+p {
+    font-size: 35px;
 }
