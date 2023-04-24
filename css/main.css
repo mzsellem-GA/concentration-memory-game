@@ -1,0 +1,35 @@
+*{
+    font-family: 'Ysabeau', sans-serif;
+}
+h1{
+    text-align: center;
+}
+div.parent-div *{
+    text-align: center;
+    border: 1px solid black;
+}
+.parent-div{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+.start-timer-banner{
+    display: flex;
+    position: relative;
+    top: 150px;
+}
+.start-button-div{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 140px;
+}
+
+.timer-banner{
+    display: flex;
+    flex-wrap: wrap; 
+    position: absolute;
+    right: 155px;
+}

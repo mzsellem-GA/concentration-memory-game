@@ -1,4 +1,4 @@
-## Analze the app's functionality
+# Match the Flag
 
 USER STORY
 
@@ -14,6 +14,7 @@ As a player I want:
     - A congratulatory message to be rendered above the board if I match all the flags in 1 minute or less because it's validating
         - If the congratulatory message is rendered, I want the timer to stop because the game is over
 
+Icebox Features: shuffle feature and music on start 
 
 Game Specific MVPs
 - To use flags of countries as theme for game (8 different images)
@@ -42,10 +43,7 @@ Project Specific-MVPs
 
 ## Think about the overall design (look & feel) of the app
 
-- Minimalistic wood table, comfy home-feel (so I can focus on code) --if I get enough time I can play around with design
-- If time, create background audio when start is clicked
-    - Audio will be of ambient noises you'd hear in the house to feel like you're playing this at home
-
+- Minimalistic wood table, comfy, home-feel
 
 ## Wireframe the UI (no code)
 
@@ -53,12 +51,14 @@ Project Specific-MVPs
 
 
 ## Pseudocode (example structure from connect four)
-1 Define required constants
+1. Define required constants
     - two arrays:
         - flagArray1 with the following property:
-            - flag (key) and image of the flag (value)
+            - front (key) and image of the flag (value)
+            - back (key) another image (value --which will be the same for every card)
         - flagArray2 as a copy of flagArray1 to match against
-2 Define required variables used to track the state of the game
+            - with only front, back, and isMatch properties
+2. Define required variables used to track the state of the game
     - let timer
     - let isSolved
     - the following properties on BOTH arrays:
@@ -66,7 +66,7 @@ Project Specific-MVPs
     - the following properties on flagArray1:
         - isMatch
         - isVisible
-3 Cache DOM elements (store a representation of the view, seen by the player, so these elements can be updated/manipulated)
+3. Cache DOM elements (store a representation of the view, seen by the player, so these elements can be updated/manipulated)
     - store the 9 elements that represent the flags on the page
         - child divs with 2 class names (cell and name of flag)
     - renderMessage()
@@ -75,7 +75,7 @@ Project Specific-MVPs
         - resets timer
         - resets flags to inital state (hidden)
         - reset messages to initial state (empty string)
-4 Upon loading the app should:
+4. Upon loading the app should:
     4.1 Initialize the state variables
         - properties of flagArray1:
             - isVisible: false
@@ -85,11 +85,11 @@ Project Specific-MVPs
         - let renderMessage = " ";
     4.2 Render those values to the page
     4.3 Wait for the user to interact
-5 Handle a player beginning a game
+5. Handle a player beginning a game
     5.1 player clicks start button
         - timer starts 
         - all states are initialized
-6 Handle a player clicking a box
+6. Handle a player clicking a box
     - player clicks a box --> reveals image of flag (do this through nesting an image tag in the child div --parent is linked to its children)
         - create a function (numFlagsVisible) such that only two cards can be compared at a time
         - if the second click reveals a matching flag:
@@ -100,7 +100,7 @@ Project Specific-MVPs
                 - update isVisible = false
         - for flagArray1, if all objects have the following values: isVisible = true and isMatch = true, AND the timer is under 1 minute, isSolved = true
         - else, isSolved = false
-7 Render message based on isSolved values:
+7. Render message based on isSolved values:
     - true: (use DOM to) display "Congratulations, you won!"
     - false: (use DOM to) display "Sorry! You ran out of time!"
 
