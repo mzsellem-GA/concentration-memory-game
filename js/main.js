@@ -25,10 +25,10 @@ let timer;
 let isSolved;
 
   /*----- cached elements  -----*/
-let parentDiv = document.createElement("div").classList.add("parent-div");
-document.body.append(parentDiv);
-let childDiv= parentDiv.createElement("div").classList.add("child");
-parentDiv.append(childDiv);
+// let parentDiv = document.createElement("div").classList.add("parent-div");
+// document.body.append(parentDiv);
+// let childDiv= parentDiv.createElement("div").classList.add("child");
+// parentDiv.append(childDiv);
 
 
 

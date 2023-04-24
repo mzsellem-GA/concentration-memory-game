@@ -1,12 +1,18 @@
 *{
     font-family: 'Ysabeau', sans-serif;
 }
+body {
+    background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4NTkzNzEzLWltYWdlLWt3dnhvZXB2LmpwZw.jpg');
+    background-size: cover;
+    height: 790px;
+    width: 790px;
+  }
 h1{
     text-align: center;
 }
 div.parent-div *{
     text-align: center;
-    border: 1px solid black;
+    border: 2px solid black;
 }
 .parent-div{
     display: grid;
