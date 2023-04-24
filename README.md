@@ -1,17 +1,3 @@
-CONCENTRATION MEMORY GAME   
-
-☐ <Find The Flag>: This is a timed memory game. Select a tile and try to match the image with its exact copy in 1 minute or less! There are 8 flags to match. 
-
-☐ Screenshot(s): Images of your actual game.
-
-☐ Technologies Used: JavaScript, HTML, CSS, Figma
-
-☐ Getting Started: In this section include the link to your deployed game and any instructions you deem important.
-
-☐ Next Steps: music on start, flag randomizer feature.
-
-- frequent commits (at least 1 everyday --starting monday 4/24)
-
 ## Analze the app's functionality
 
 USER STORY
@@ -67,36 +53,12 @@ Project Specific-MVPs
 
 
 ## Pseudocode (example structure from connect four)
-- Pseudocode outlines the app's logic using plain language. It provides a road map to writing the code itself.
-
-
-- create a header with the name of the game
-- create an h2 for (later) rendering of a "Sorry! You ran out of time!" or "Congratulations, you won!" message
-- make the background a pine wood table 
-- create a 4x4 grid board with each box having an outline (illusion of square "slot")
-    - assign each box:  
-        - two class names: "cell" and whatever "flag name" is going there (ie. French)
-- create a start button, a timer (for 1 minute) and a title for the timer (visually above it)
-    - start button refreshes game 
-    - timer resets with start button click 
-- make it default that each flag is hidden until clicked 
-- when a box is clicked, make the flag visible 
-- when a consecutive box is clicked, ensure that only two flags will be compared at a single time
-    - compare the two flags:
-        - if match, keep BOTH cards visible
-        - if no match, hide BOTH cards after a 2 second timer delay
-- if all flags are matched, all flags are visible, AND the timer is under 1 minute, display: "Congratulations, you won!"
-    - else, display: "Sorry! You ran out of time!
-
-
 1 Define required constants
     - two arrays:
         - flagArray1 with the following property:
             - flag (key) and image of the flag (value)
         - flagArray2 as a copy of flagArray1 to match against
-
 2 Define required variables used to track the state of the game
-    - use a board to represent the boxes to choose from 
     - let timer
     - let isSolved
     - the following properties on BOTH arrays:
@@ -105,11 +67,11 @@ Project Specific-MVPs
         - isMatch
         - isVisible
 3 Cache DOM elements (store a representation of the view, seen by the player, so these elements can be updated/manipulated)
-    - store the 18 elements that represent the flags on the page
+    - store the 9 elements that represent the flags on the page
         - child divs with 2 class names (cell and name of flag)
     - renderMessage()
         - for the "you win" or "you ran out of time" message
-    - play again button = start button = initialization ????
+    - start button
         - resets timer
         - resets flags to inital state (hidden)
         - reset messages to initial state (empty string)
@@ -129,7 +91,7 @@ Project Specific-MVPs
         - all states are initialized
 6 Handle a player clicking a box
     - player clicks a box --> reveals image of flag (do this through nesting an image tag in the child div --parent is linked to its children)
-        - create a function such that only two cards can be compared at a time
+        - create a function (numFlagsVisible) such that only two cards can be compared at a time
         - if the second click reveals a matching flag:
             - flag remains visible for the remainder of the game
                 - make sure to remove click-ability if isSolve = true (first thing in event listener)
@@ -143,8 +105,7 @@ Project Specific-MVPs
     - false: (use DOM to) display "Sorry! You ran out of time!"
 
 ## Identify the application's state (data)
-- isMatch
-- isVisible
-- checkIsSolved
-- isSolved
-- numFlagsVisible
+- isMatch: are two flags matched or not
+- isVisible: is the flag visible or not
+- timer: tracks time throughout the game (used in logic to determine win/loss)
+- isSolved: determines the outcome of the game
