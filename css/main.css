@@ -4,7 +4,7 @@
 body {
     background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4NTkzNzEzLWltYWdlLWt3dnhvZXB2LmpwZw.jpg');
     background-size: cover;
-    height: 890px;
+    height: 1000px;
     width: 790px;
   }
 h1 {
@@ -22,21 +22,25 @@ div.parent-div *{
     column-gap: 10px;
     row-gap: 10px;
 }
+
 .start-timer-banner{
     display: flex;
     position: relative;
     top: 150px;
+    align-items: center;
 }
 .start-button-div{
     display: flex;
+    padding: 15px;
     flex-wrap: wrap;
     position: absolute;
     left: 140px;
 }
 
-.timer-banner{
+.timer-div{
+    text-align: center;
     display: flex;
     flex-wrap: wrap; 
     position: absolute;
-    right: 155px;
+    right: 110px;
 }
