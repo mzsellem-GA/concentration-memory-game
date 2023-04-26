@@ -1,5 +1,5 @@
  /*----- constants -----*/
-flagsArray1 = [
+flagsArray = [
     {name: "australian", front: 'australian-flag.png', back: 'fields-back-of-card.png'},
     {name: "brazilian", front: 'brazilian-flag.png', back: 'fields-back-of-card.png'},
     {name: "canadian", front: 'canadian-flag.png', back: 'fields-back-of-card.png'},
@@ -7,30 +7,25 @@ flagsArray1 = [
     {name: "indian", front: 'indian-flag.png', back: 'fields-back-of-card.png'},
     {name: "romanian", front: 'romanian-flag.png', back: 'fields-back-of-card.png'},
     {name: "usa", front: 'usa-flag.png', back: 'fields-back-of-card.png'},
-    {name: "japanese", front: 'japanese-flag.png', back: 'fields-back-of-card.png'}
-];
-flagsArray2 = [
-    {front: 'australian-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'brazilian-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'canadian-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'french-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'indian-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'romanian-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'usa-flag.png', back: 'fields-back-of-card.png'},
-    {front: 'japanese-flag.png', back: 'fields-back-of-card.png'},
+    {name: "japanese", front: 'japanese-flag.png', back: 'fields-back-of-card.png'},
+    {name: "australian-2", front: 'australian-flag.png', back: 'fields-back-of-card.png'},
+    {name: "brazilian-2", front: 'brazilian-flag.png', back: 'fields-back-of-card.png'},
+    {name: "canadian-2", front: 'canadian-flag.png', back: 'fields-back-of-card.png'},
+    {name: "french-2", front: 'french-flag.png', back: 'fields-back-of-card.png'},
+    {name: "indian-2", front: 'indian-flag.png', back: 'fields-back-of-card.png'},
+    {name: "romanian-2", front: 'romanian-flag.png', back: 'fields-back-of-card.png'},
+    {name: "usa-2", front: 'usa-flag.png', back: 'fields-back-of-card.png'},
+    {name: "japanese-2", front: 'japanese-flag.png', back: 'fields-back-of-card.png'},
 ]
-// flagsArray1[i].isMatch
-// flagsArray1[e.target.id].isMatch
+
   /*----- state variables -----*/
 // let timer;
 // let isSolved;
 
   /*----- cached elements  -----*/
 const parentDiv = document.querySelector(".parent-div");
-const childDiv = document.getElementsByClassName("child-div");
-const image = document.querySelectorAll("img");
-// console.log('marley', childDiv) //array of childDivs
-function childDivAndFlagOneLoop (arr) {
+
+function makeChildDivAndImageTags (arr) {
     for(let i=0; i < arr.length; i++){
         let childDiv = document.createElement("div");
         childDiv.classList.add("child-div");
@@ -40,7 +35,7 @@ function childDivAndFlagOneLoop (arr) {
         parentDiv.append(childDiv);
 
         const flagTag = document.createElement("img");
-        flagTag.src = flagsArray1[i].back; 
+        flagTag.src = flagsArray[i].back; 
         flagTag.classList.add("front");
         flagTag.dataset.name = arr[i].name; //grabs the name property in flagsArray1, and assigns that to the dataset for this element
         flagTag.style.height = "150px"; //covers the child div
@@ -49,42 +44,47 @@ function childDivAndFlagOneLoop (arr) {
         childDiv.append(flagTag);
         }
     }
-function childDivAndFlagTwoLoop (arr) {        
-    for(let i=0; i < arr.length; i++){
-        let childDiv = document.createElement("div");
-        childDiv.classList.add("child-div");
-        childDiv.style.height = "150px";
-        childDiv.style.width = "200px";
-        childDiv.style.display = "flex";
-        parentDiv.append(childDiv);
 
-        const flagTag = document.createElement("img");
-        flagTag.src = flagsArray1[i].front; 
-        flagTag.classList.add("front");
-        flagTag.style.height = "100px";
-        flagTag.style.margin = "auto";
-        childDiv.append(flagTag);
-        }
-}
-childDivAndFlagOneLoop(flagsArray1);
-childDivAndFlagTwoLoop(flagsArray2);
+makeChildDivAndImageTags(flagsArray);
 
 
   /*----- event listeners -----*/
-
+let flipped = 0;
 function flipFlag(e){
     const name = e.target.dataset.name
-    const flagObject = flagsArray1.filter(card => name === card.name)
-    console.log(flagObject[0].front)
-    // console.log("hi", front);
-    // e.target.src = flagsArray1[0].back 
+    const flagObject = flagsArray.filter(card => name === card.name) //accesses each flag "card" object
     e.target.src = flagObject[0].front; 
-    // this flips a card from the back to the front 
-    //next steps: track clicks through a state variable 
-   
+    flipped++; //increments flipped by 1 with each click
+    // if(flipped%2 == 0){
+    //     if(){
+
+    //     }
+    // } else{
+
+    // }
 }
 
 parentDiv.addEventListener('click', flipFlag);
+
+//create a function (numFlagsVisible) such that only two cards can be compared at a time
+    // do this by tracking how many cards are flipped
+    // if card values === to each other, do nothing
+    // if card values !== to each other, flip cards back over after 2 seconds (timeout(expr, 2000)??)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /*----- functions -----*/
