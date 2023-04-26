@@ -87,15 +87,16 @@ if(pickedFlagNameArray.length === 1) {
 if(pickedFlagNameArray.length === 2){
   if(pickedFlagNameArray[0] === pickedFlagNameArray[1]){ //if the value of the indices are ===, empty the array
     console.log("array after second click", pickedFlagNameArray)
+    pickedFlagNameArray = [];
     return;
   } else {
     console.log("mismatch", pickedFlagNameArray)
-    setTimeout(() => {
+    setTimeout(function () {
       const getId0 = document.getElementById(pickedFlagIdArray[0]);
-      console.log(getId0);
+      // console.log(getId0);
       getId0.src = flagObject[0].back;
       const getId1 = document.getElementById(pickedFlagIdArray[1]);
-      console.log(getId1);
+      // console.log(getId1);
       getId1.src = flagObject[0].back;
     }, 2000); 
   }
