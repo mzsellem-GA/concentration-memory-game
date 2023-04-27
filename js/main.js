@@ -68,9 +68,9 @@ button.addEventListener('click', function() {
 
   /*----- Functions -----*/
 
-// window.onload = function() {
-//     document.getElementById("my_audio").play();
-// }
+window.onload = function() {
+    document.getElementById("my_audio").play();
+}
 
 function flipFlag(e){
   targetId = e.target.id; 
@@ -81,7 +81,7 @@ function flipFlag(e){
 
   pickedFlagNameArray.push(name);
   pickedFlagIdArray.push(targetId);
-  
+
   if(pickedFlagNameArray.length === 1) {
     return;
   }
@@ -108,7 +108,7 @@ function flipFlag(e){
           pickedFlagNameArray = [];
           pickedFlagIdArray = [];
         }, 500); 
-        if (noMatch == 20) {
+        if (noMatch == 3) {
           document.querySelector('h2').innerText = "Sorry! That's too many guesses!"
         }
     }
