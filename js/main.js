@@ -97,8 +97,8 @@ function flipFlag(e){
     console.log("how many matches?", flipped);
 
     if(flipped === 8){ //insert conditions for winning
-      document.querySelector('h3').innerText = "Congratulations! You won!"
-      console.log("you won"); 
+      document.querySelector('h3').innerText = "Congratulations! You won!";
+      document.querySelector('h2').innerText = '';
     } else if(noMatch === 20) {
        document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
      }
