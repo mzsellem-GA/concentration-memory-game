@@ -121,7 +121,7 @@ function flipFlag(e){
         getId1.src = flagObject[0].back;
         pickedFlagNameArray = [];
         pickedFlagIdArray = [];
-      }, 2000); 
+      }, 500); 
     }
   }
 }
