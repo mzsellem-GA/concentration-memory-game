@@ -3,15 +3,31 @@
 
 -------
 
-### Screenshot(s): Images of your actual game.
+## Product 
+
+![initial game state](initial-game-state.png)
+
+![initial game state](win.png)
+
+![initial game state](loss.png)
 
 -----
 
-### Technologies Used: HTML, CSS, JavaScript, Figma
+## Technologies Used
+- HTML
+- CSS 
+- JavaScript
+- Figma
+- Sound Effect from:  https://pixabay.com/sound-effects/search/cafe/
 
 ----
-### Getting Started: In this section include the link to your deployed game and any instructions you deem important.
+## Getting Started
+1. To begin the game, head on over to: https://mzsellem-ga.github.io/concentration-memory-game/
+
+2. Pick a card and begin the game!
 
 ----
 
-### Next Steps: Add a shuffle feature and a timer in the game logic
+## Future Enhancements
+- Add a shuffle feature
+- Add a timer 
