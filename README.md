@@ -1,4 +1,4 @@
-# Find the Flag
+# Find the Flag 🇩🇰
 ### This is a game of concentration. You have a limited number of guesses. Can you correctly match the pairs of flags? Let's find out!  
 
 -------
@@ -21,10 +21,13 @@
 - Sound Effect from:  https://pixabay.com/sound-effects/search/cafe/
 
 ----
-## Getting Started
-1. To begin the game, head on over to: https://mzsellem-ga.github.io/concentration-memory-game/
 
-2. Pick a card and begin the game!
+## Getting Started
+1. To access the game, head on over to: https://mzsellem-ga.github.io/concentration-memory-game/
+
+2. To start the game, pick a card 
+
+3. As you play, let yourself be soothed by the ambient sounds of chirping birds
 
 ----
 
