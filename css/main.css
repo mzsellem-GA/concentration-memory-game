@@ -17,8 +17,11 @@ div.parent-div *{
     border: 2px solid black;
 }
 .parent-div{
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
     display: grid;
-    justify-content: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 10px;
     row-gap: 10px;

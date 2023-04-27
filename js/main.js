@@ -24,7 +24,7 @@ const button = document.querySelector('button');
   /*----- state variables -----*/
 
 // let isSolved;
-let flipped = 0;
+let match = 0;
 let noMatch = 0;
 let targetDatasetName;
 let targetSource;
@@ -48,9 +48,9 @@ function makeChildDivAndImageTags (arr) {
         flagTag.src = flagsArray[i].back; 
         flagTag.classList.add("front");
         flagTag.id = (`card${[i]}`);
-        flagTag.dataset.name = arr[i].name; //grabs the name property in flagsArray, and assigns that to the dataset for this element
-        flagTag.style.height = "150px"; //covers the child div
-        flagTag.style.width = "200px"; //covers the child div
+        flagTag.dataset.name = arr[i].name; 
+        flagTag.style.height = "150px"; 
+        flagTag.style.width = "200px"; 
         flagTag.style.margin = "auto";
         childDiv.append(flagTag);
         }
@@ -70,44 +70,42 @@ button.addEventListener('click', function() {
   /*----- Functions -----*/
 
 function flipFlag(e){
-  targetId = e.target.id; //grabs id of click
-  const name = e.target.dataset.name //grabs the string of the name property
-  const flagObject = flagsArray.filter(card => name === card.name) //accesses each flag "card" object
-  targetSource = flagObject[0].front; //captures the front property of the flagsArray
-  e.target.src = targetSource; //reassigns the value of the target source to teh flag array image
- 
-  // targetId = e.target.id; // accesses target's id property -we will use this to use the 
-  // document.getElementById method to target the cards in the DOM to change their properties
-  // based on the game conditions/state without having to loop thorugh ALL of the cards and classes
+  targetId = e.target.id; 
+  const name = e.target.dataset.name 
+  const flagObject = flagsArray.filter(card => name === card.name) 
+  targetSource = flagObject[0].front; 
+  e.target.src = targetSource; 
 
   pickedFlagNameArray.push(name); //push clicked target's dataset name into pickedFlagNameArray
   pickedFlagIdArray.push(targetId); //updates the array
-  console.log("is this picked flag ID array?", pickedFlagIdArray);
-  console.log("is this picked flag name array?", pickedFlagNameArray);
+  // console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
+  // console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
 
   if(pickedFlagNameArray.length === 1) {
-  // console.log("array after 1st click", pickedFlagNameArray);// see if cards are pushed into array
+  console.log("Name array after 1st click", pickedFlagNameArray);// see if cards are pushed into array
+  console.log("ID array after 1st click", pickedFlagIdArray);// see if cards are pushed into array
     return;
   }
   if(pickedFlagNameArray.length === 2){
-    if(pickedFlagNameArray[0] === pickedFlagNameArray[1]){ //if the value of the indices are ===, empty the array
+    if(pickedFlagNameArray[0] === pickedFlagNameArray[1]){ 
     console.log("flag name array after second click", pickedFlagNameArray)
-    flipped++; //increments flipped by 1 with each click
-    console.log("how many matches?", flipped);
+    console.log("flag ID array after second click", pickedFlagIdArray)
+    match++; 
+    console.log("how many matches?", match);
+    pickedFlagNameArray = [];
+    pickedFlagIdArray = [];
 
-    if(flipped === 8){ // conditions for winning
+    if(match === 8){ // conditions for winning
       document.querySelector('h3').innerText = "Congratulations! You won!"; 
       document.querySelector('h2').innerText = '';
     } else if(noMatch === 20) { // conditions for losing
        document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
        document.querySelector('h2').innerText = '';
      }
-    pickedFlagNameArray = [];
-    pickedFlagIdArray = [];
     return;
     } else if(pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
       noMatch++;
-      console.log("mismatch", noMatch);
+      console.log("noMatch", noMatch);
       setTimeout(function () {
       const getId0 = document.getElementById(pickedFlagIdArray[0]);
       getId0.src = flagObject[0].back;
