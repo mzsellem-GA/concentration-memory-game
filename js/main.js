@@ -1,4 +1,5 @@
  /*----- constants -----*/
+
 flagsArray = [
     {name: "australian", front: 'australian-flag.png', back: 'fields-back-of-card.png'},
     {name: "brazilian", front: 'brazilian-flag.png', back: 'fields-back-of-card.png'},
@@ -23,38 +24,36 @@ const button = document.querySelector('button');
 
   /*----- state variables -----*/
 
-// let isSolved;
 let match = 0;
 let noMatch = 0;
-let targetDatasetName;
+let targetDatasetName; 
 let targetSource;
+let targetId;
 let pickedFlagNameArray = [];
 let pickedFlagIdArray = [];
-let unmatchedFlagArray = [];
-let targetId;
 
   /*----- cached elements  -----*/
 
 function makeChildDivAndImageTags (arr) {
-    for(let i=0; i < arr.length; i++){
-        let childDiv = document.createElement("div");
-        childDiv.classList.add("child-div");
-        childDiv.style.height = "150px";
-        childDiv.style.width = "200px";
-        childDiv.style.display = "flex";
-        parentDiv.append(childDiv);
+  for(let i=0; i < arr.length; i++){
+    let childDiv = document.createElement("div");
+    childDiv.classList.add("child-div");
+    childDiv.style.height = "150px";
+    childDiv.style.width = "200px";
+    childDiv.style.display = "flex";
+    parentDiv.append(childDiv);
 
-        const flagTag = document.createElement("img");
-        flagTag.src = flagsArray[i].back; 
-        flagTag.classList.add("front");
-        flagTag.id = (`card${[i]}`);
-        flagTag.dataset.name = arr[i].name; 
-        flagTag.style.height = "150px"; 
-        flagTag.style.width = "200px"; 
-        flagTag.style.margin = "auto";
-        childDiv.append(flagTag);
-        }
-    }
+    const flagTag = document.createElement("img");
+    flagTag.src = flagsArray[i].back; 
+    flagTag.classList.add("front");
+    flagTag.id = (`card${[i]}`);
+    flagTag.dataset.name = arr[i].name; 
+    flagTag.style.height = "150px"; 
+    flagTag.style.width = "200px"; 
+    flagTag.style.margin = "auto";
+    childDiv.append(flagTag);
+  }
+}
 
 makeChildDivAndImageTags(flagsArray);
 
@@ -82,46 +81,48 @@ function flipFlag(e){
 
   pickedFlagNameArray.push(name);
   pickedFlagIdArray.push(targetId);
-  console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
-  console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
+  // console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
+  // console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
 
   if(pickedFlagNameArray.length === 1) {
-    console.log("Name array after 1st click", pickedFlagNameArray);// see if cards are pushed into array
-    console.log("ID array after 1st click", pickedFlagIdArray);// see if cards are pushed into array
+    // console.log("Name array after 1st click", pickedFlagNameArray);
+    // console.log("ID array after 1st click", pickedFlagIdArray);
     return;
   }
   if(pickedFlagNameArray.length === 2){
     if(pickedFlagNameArray[0] === pickedFlagNameArray[1]){ 
-      console.log("flag name array after second click", pickedFlagNameArray)
-      console.log("flag ID array after second click", pickedFlagIdArray)
+      // console.log("flag name array after second click", pickedFlagNameArray)
+      // console.log("flag ID array after second click", pickedFlagIdArray)
       match++; 
-      console.log("how many matches?", match);
+      // console.log("how many matches?", match);
       pickedFlagNameArray = [];
       pickedFlagIdArray = [];
 
       if(match === 8){ 
         document.querySelector('h3').innerText = "Congratulations! You won!"; 
         document.querySelector('h2').innerText = '';
-      } else if(noMatch == 2) { // conditions for losing
-        document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
-        document.querySelector('h2').innerText = '';
       }
       return;
-    } else if(pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
-      console.log("flag name array if noMatch", pickedFlagNameArray)
-      console.log("flag ID array if noMatch", pickedFlagIdArray)
-      pickedFlagNameArray.push(name); 
-      pickedFlagIdArray.push(targetId)
-      noMatch++;
-      console.log("noMatch", noMatch);
-      setTimeout(function () {
-        const getId0 = document.getElementById(pickedFlagIdArray[0]);
-        getId0.src = flagObject[0].back;
-        const getId1 = document.getElementById(pickedFlagIdArray[1]);
-        getId1.src = flagObject[0].back;
-        pickedFlagNameArray = [];
-        pickedFlagIdArray = [];
-      }, 500); 
+    } 
+    else if (pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
+        // console.log("flag name array if noMatch", pickedFlagNameArray)
+        // console.log("flag ID array if noMatch", pickedFlagIdArray)
+        pickedFlagNameArray.push(name); 
+        pickedFlagIdArray.push(targetId)
+        noMatch++;
+        // console.log("noMatch", noMatch);
+        setTimeout(function () {
+          const getId0 = document.getElementById(pickedFlagIdArray[0]);
+          getId0.src = flagObject[0].back;
+          const getId1 = document.getElementById(pickedFlagIdArray[1]);
+          getId1.src = flagObject[0].back;
+          pickedFlagNameArray = [];
+          pickedFlagIdArray = [];
+        }, 500); 
+        if (noMatch == 20) {
+          document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
+          document.querySelector('h2').innerText = '';
+        }
     }
   }
 }
