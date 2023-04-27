@@ -50,7 +50,7 @@ makeChildDivAndImageTags(flagsArray);
   /*----- event listeners -----*/
 
 let flipped = 0;
-let nomatch = 0;
+let noMatch = 0;
 let targetDatasetName;
 let targetSource;
 let pickedFlagNameArray = [];
@@ -99,7 +99,7 @@ function flipFlag(e){
     if(flipped === 8){ //insert conditions for winning
       document.querySelector('h3').innerText = "Congratulations! You won!"
       console.log("you won"); 
-    } else if(nomatch === 20) {
+    } else if(noMatch === 20) {
        document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
      }
 
@@ -107,7 +107,7 @@ function flipFlag(e){
     pickedFlagIdArray = [];
     return;
     } else if(pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
-      nomatch++;
+      noMatch++;
       // console.log("mismatch", pickedFlagNameArray)
       setTimeout(function () {
       const getId0 = document.getElementById(pickedFlagIdArray[0]);
@@ -120,9 +120,7 @@ function flipFlag(e){
 }
 
 parentDiv.addEventListener('click', flipFlag);
-
-// if(flipped === 8){ //insert conditions for winning
-//   document.querySelector('h3').innerContent = "Congratulations! You won!"
-//  } else {
-//    document.querySelector('h3').innerContent = "Sorry! That's too many guesses!"
-//  }
+const button = document.querySelector('button');
+button.addEventListener('click', function() {
+  window.location.reload();
+})
