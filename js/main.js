@@ -81,36 +81,25 @@ function flipFlag(e){
 
   pickedFlagNameArray.push(name);
   pickedFlagIdArray.push(targetId);
-  // console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
-  // console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
-
+  
   if(pickedFlagNameArray.length === 1) {
-    // console.log("Name array after 1st click", pickedFlagNameArray);
-    // console.log("ID array after 1st click", pickedFlagIdArray);
     return;
   }
   if(pickedFlagNameArray.length === 2){
     if(pickedFlagNameArray[0] === pickedFlagNameArray[1]){ 
-      // console.log("flag name array after second click", pickedFlagNameArray)
-      // console.log("flag ID array after second click", pickedFlagIdArray)
       match++; 
-      // console.log("how many matches?", match);
       pickedFlagNameArray = [];
       pickedFlagIdArray = [];
 
       if(match === 8){ 
-        document.querySelector('h3').innerText = "Congratulations! You won!"; 
-        document.querySelector('h2').innerText = '';
+        document.querySelector('h2').innerText = "Congratulations! You won!";
       }
       return;
     } 
     else if (pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
-        // console.log("flag name array if noMatch", pickedFlagNameArray)
-        // console.log("flag ID array if noMatch", pickedFlagIdArray)
         pickedFlagNameArray.push(name); 
         pickedFlagIdArray.push(targetId)
         noMatch++;
-        // console.log("noMatch", noMatch);
         setTimeout(function () {
           const getId0 = document.getElementById(pickedFlagIdArray[0]);
           getId0.src = flagObject[0].back;
@@ -120,8 +109,7 @@ function flipFlag(e){
           pickedFlagIdArray = [];
         }, 500); 
         if (noMatch == 20) {
-          document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
-          document.querySelector('h2').innerText = '';
+          document.querySelector('h2').innerText = "Sorry! That's too many guesses!"
         }
     }
   }
