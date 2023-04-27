@@ -81,9 +81,9 @@ function flipFlag(e){
   e.target.src = targetSource; 
 
   pickedFlagNameArray.push(name);
-  pickedFlagIdArray.push(targetId); 
-  // console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
-  // console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
+  pickedFlagIdArray.push(targetId);
+  console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
+  console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
 
   if(pickedFlagNameArray.length === 1) {
     console.log("Name array after 1st click", pickedFlagNameArray);// see if cards are pushed into array
@@ -92,22 +92,21 @@ function flipFlag(e){
   }
   if(pickedFlagNameArray.length === 2){
     if(pickedFlagNameArray[0] === pickedFlagNameArray[1]){ 
-    console.log("flag name array after second click", pickedFlagNameArray)
-    console.log("flag ID array after second click", pickedFlagIdArray)
-    match++; 
-    console.log("how many matches?", match);
-    pickedFlagNameArray = [];
-    pickedFlagIdArray = [];
+      console.log("flag name array after second click", pickedFlagNameArray)
+      console.log("flag ID array after second click", pickedFlagIdArray)
+      match++; 
+      console.log("how many matches?", match);
+      pickedFlagNameArray = [];
+      pickedFlagIdArray = [];
 
-    if(match === 8){ // conditions for winning
-      document.querySelector('h3').innerText = "Congratulations! You won!"; 
-      document.querySelector('h2').innerText = '';
-
-    } else if(noMatch === 20) { // conditions for losing
-       document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
-       document.querySelector('h2').innerText = '';
-     }
-    return;
+      if(match === 8){ 
+        document.querySelector('h3').innerText = "Congratulations! You won!"; 
+        document.querySelector('h2').innerText = '';
+      } else if(noMatch == 2) { // conditions for losing
+        document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
+        document.querySelector('h2').innerText = '';
+      }
+      return;
     } else if(pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
       console.log("flag name array if noMatch", pickedFlagNameArray)
       console.log("flag ID array if noMatch", pickedFlagIdArray)
@@ -116,10 +115,12 @@ function flipFlag(e){
       noMatch++;
       console.log("noMatch", noMatch);
       setTimeout(function () {
-      const getId0 = document.getElementById(pickedFlagIdArray[0]);
-      getId0.src = flagObject[0].back;
-      const getId1 = document.getElementById(pickedFlagIdArray[1]);
-      getId1.src = flagObject[0].back;
+        const getId0 = document.getElementById(pickedFlagIdArray[0]);
+        getId0.src = flagObject[0].back;
+        const getId1 = document.getElementById(pickedFlagIdArray[1]);
+        getId1.src = flagObject[0].back;
+        pickedFlagNameArray = [];
+        pickedFlagIdArray = [];
       }, 2000); 
     }
   }
