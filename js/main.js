@@ -69,6 +69,10 @@ button.addEventListener('click', function() {
 
   /*----- Functions -----*/
 
+// window.onload = function() {
+//     document.getElementById("my_audio").play();
+// }
+
 function flipFlag(e){
   targetId = e.target.id; 
   const name = e.target.dataset.name 
@@ -76,14 +80,14 @@ function flipFlag(e){
   targetSource = flagObject[0].front; 
   e.target.src = targetSource; 
 
-  pickedFlagNameArray.push(name); //push clicked target's dataset name into pickedFlagNameArray
-  pickedFlagIdArray.push(targetId); //updates the array
+  pickedFlagNameArray.push(name);
+  pickedFlagIdArray.push(targetId); 
   // console.log("what does this picked flag ID array contain after push?", pickedFlagIdArray);
   // console.log("what does this picked flag name array contain after push?", pickedFlagNameArray);
 
   if(pickedFlagNameArray.length === 1) {
-  console.log("Name array after 1st click", pickedFlagNameArray);// see if cards are pushed into array
-  console.log("ID array after 1st click", pickedFlagIdArray);// see if cards are pushed into array
+    console.log("Name array after 1st click", pickedFlagNameArray);// see if cards are pushed into array
+    console.log("ID array after 1st click", pickedFlagIdArray);// see if cards are pushed into array
     return;
   }
   if(pickedFlagNameArray.length === 2){
@@ -98,12 +102,17 @@ function flipFlag(e){
     if(match === 8){ // conditions for winning
       document.querySelector('h3').innerText = "Congratulations! You won!"; 
       document.querySelector('h2').innerText = '';
+
     } else if(noMatch === 20) { // conditions for losing
        document.querySelector('h3').innerText = "Sorry! That's too many guesses!"
        document.querySelector('h2').innerText = '';
      }
     return;
     } else if(pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
+      console.log("flag name array if noMatch", pickedFlagNameArray)
+      console.log("flag ID array if noMatch", pickedFlagIdArray)
+      pickedFlagNameArray.push(name); 
+      pickedFlagIdArray.push(targetId)
       noMatch++;
       console.log("noMatch", noMatch);
       setTimeout(function () {
@@ -115,4 +124,3 @@ function flipFlag(e){
     }
   }
 }
-

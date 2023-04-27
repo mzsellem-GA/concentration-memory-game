@@ -14,4 +14,4 @@
 
 ----
 
-### Next Steps: Add a shuffle feature and audio upon page loading
+### Next Steps: Add a shuffle feature and a timer in the game logic
