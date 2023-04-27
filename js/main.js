@@ -74,8 +74,8 @@ window.onload = function() {
 
 function flipFlag(e){
   targetId = e.target.id; 
-  const name = e.target.dataset.name 
-  const flagObject = flagsArray.filter(card => name === card.name) 
+  const name = e.target.dataset.name;
+  const flagObject = flagsArray.filter(card => name === card.name); 
   targetSource = flagObject[0].front; 
   e.target.src = targetSource; 
 
@@ -98,7 +98,7 @@ function flipFlag(e){
     } 
     else if (pickedFlagIdArray[0] !== pickedFlagIdArray[1]) {
         pickedFlagNameArray.push(name); 
-        pickedFlagIdArray.push(targetId)
+        pickedFlagIdArray.push(targetId);
         noMatch++;
         setTimeout(function () {
           const getId0 = document.getElementById(pickedFlagIdArray[0]);
@@ -109,7 +109,7 @@ function flipFlag(e){
           pickedFlagIdArray = [];
         }, 500); 
         if (noMatch == 3) {
-          document.querySelector('h2').innerText = "Sorry! That's too many guesses!"
+          document.querySelector('h2').innerText = "Sorry! That's too many guesses!";
         }
     }
   }

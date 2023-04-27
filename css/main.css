@@ -26,7 +26,6 @@ div.parent-div *{
     column-gap: 10px;
     row-gap: 10px;
 }
-
 .start-timer-banner{
     display: flex;
     flex-direction: column;
@@ -41,7 +40,6 @@ div.parent-div *{
     font-size: 35px;
     border-radius: 25px;
 }
-
 .timer-div{
     text-align: center;
     position: relative;
