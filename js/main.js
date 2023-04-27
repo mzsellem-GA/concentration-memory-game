@@ -108,7 +108,7 @@ function flipFlag(e){
           pickedFlagNameArray = [];
           pickedFlagIdArray = [];
         }, 500); 
-        if (noMatch == 20) {
+        if (noMatch === 5) {
           document.querySelector('h2').innerText = "Sorry! That's too many guesses!";
         }
     }
