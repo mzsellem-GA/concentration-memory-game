@@ -83,6 +83,9 @@ ambienceButton.addEventListener('click', function () {
   /*----- Functions -----*/
 
 function flipFlag(e){
+  if(noMatch === 5 || match === 8){
+    return;
+  }
   targetId = e.target.id; 
   const name = e.target.dataset.name;
   const flagObject = flagsArray.filter(card => name === card.name); 
