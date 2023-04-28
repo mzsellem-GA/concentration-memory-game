@@ -20,7 +20,9 @@ flagsArray = [
 ]
 
 const parentDiv = document.querySelector(".parent-div");
-const button = document.querySelector('button');
+const playAgainButton = document.querySelector('button');
+const myAudio =  document.getElementById("my_audio");
+
 
   /*----- state variables -----*/
 
@@ -31,6 +33,8 @@ let targetSource;
 let targetId;
 let pickedFlagNameArray = [];
 let pickedFlagIdArray = [];
+let ambienceButton = document.getElementById('music');
+let isPlaying = false;
 
   /*----- cached elements  -----*/
 
@@ -62,15 +66,21 @@ makeChildDivAndImageTags(flagsArray);
 
 parentDiv.addEventListener('click', flipFlag);
 
-button.addEventListener('click', function() {
+playAgainButton.addEventListener('click', function() {
   window.location.reload();
 })
 
-  /*----- Functions -----*/
+ambienceButton.addEventListener('click', function () {
+  if(isPlaying === false) {
+    myAudio.play();
+    isPlaying = true;
+  } else {
+    myAudio.pause();
+    isPlaying = false;
+  }
+})
 
-window.onload = function() {
-    document.getElementById("my_audio").play();
-}
+  /*----- Functions -----*/
 
 function flipFlag(e){
   targetId = e.target.id; 
