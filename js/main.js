@@ -88,7 +88,11 @@ function flipFlag(e){
   }
   targetId = e.target.id; 
   const name = e.target.dataset.name;
-  const flagObject = flagsArray.filter(card => name === card.name); 
+  const flagObject = flagsArray.filter(function (card) {
+    if (name === card.name){
+      return card;
+    }
+  });
   targetSource = flagObject[0].front; 
   e.target.src = targetSource; 
 
