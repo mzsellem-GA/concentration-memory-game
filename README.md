@@ -27,7 +27,7 @@
 
 2. To start the game, pick a card 
 
-3. As you play, let yourself be soothed by the ambient sounds of chirping birds
+3. As you play, you can choose to let yourself be soothed by the ambient sounds of chirping birds
 
 ----
 
